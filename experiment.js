@@ -37,10 +37,27 @@ function buildSentenceTrial(trial_obj) {
   return {
     timeline: [
       {
-        type: jsPsychHtmlAudioResponse,
+        type: jsPsychHtmlButtonResponse,
         stimulus: `
           <div class="recording-instructions-box">
             <h2>Read the sentence aloud</h2>
+            <p>Take a moment to get ready. When you are ready to begin, click the button below to start recording.</p>
+            <p class="sentence-stimulus">${trial_obj.stimulus}</p>
+          </div>
+        `,
+        choices: ['Start Recording'],
+        data: {
+          stimulus_code: trial_obj.code,
+          sentence: trial_obj.stimulus,
+          condition: trial_obj.condition,
+          trial_stage: 'sentence_ready'
+        }
+      },
+      {
+        type: jsPsychHtmlAudioResponse,
+        stimulus: `
+          <div class="recording-instructions-box">
+            <h2>Recording in progress</h2>
             <p>Please read the sentence naturally, then click the button when you are done.</p>
             <p class="sentence-stimulus">${trial_obj.stimulus}</p>
           </div>
@@ -146,6 +163,7 @@ const instructions = {
       <h2>Instructions</h2>
       <p>In this experiment, you will see a sentence on the screen.</p>
       <p>Your task is to record yourself reading that sentence aloud using your microphone.</p>
+      <p>For each sentence, you'll click <strong>Start Recording</strong> when you're ready, rather than having the recording begin right away.</p>
       <p>After each recording, you can listen back and either continue to the next sentence or re-record.</p>
       <p>Click "Next" to continue to the microphone test.</p>
     </div>
@@ -239,12 +257,30 @@ timeline.push(micSetup);
             <p>If the microphone worked well, you should be able to hear what you recorded.</p>
               <p><strong>Please make sure that your speaker is <em>on</em> with an appropriate volume.</stong></p>
           </div>
-            <p>When you're ready, click <strong>"Next"</strong> to begin.</p>
+            <p>When you're ready, click <strong>"Next"</strong> to continue to the start screen.</p>
         `
     ],
     show_clickable_nav: true,
     };      
     timeline.push(trialinstructions);
+
+    const microphoneTestReady = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: `
+        <div class="content">
+          <div class="recording-box">
+            <h3>Microphone Test</h3>
+            <p>Take a moment to get ready.</p>
+            <p>Click the button below when you want to begin the test recording.</p>
+          </div>
+        </div>
+      `,
+      choices: ['Start Recording'],
+      data: {
+        trial_type_label: 'microphone_test_ready'
+      }
+    };
+    timeline.push(microphoneTestReady);
 
     const testing = {
       type: jsPsychHtmlAudioResponse,
@@ -277,6 +313,7 @@ const beginMain = {
       <div class="begin-box">
         <h2>Let's Begin!</h2>
         <p>Now the microphone test is done and the main part begins.</p>
+        <p>Each sentence will appear first, and you'll click <strong>Start Recording</strong> when you're ready to speak.</p>
         <p>After each sentence, you'll be able to listen to your recording and decide whether to keep it or record again.</p>
         <p>Click "Continue" to start recording the sentences.</p>
       </div>
@@ -295,13 +332,15 @@ shuffled_trials.forEach(trial_obj => {
 });
 
 if (datapipeConfigured) {
-  timeline.push({
+  const save_data = {
     type: jsPsychPipe,
     action: "save",
     experiment_id: DATAPIPE_EXPERIMENT_ID,
     filename: data_filename,
     data_string: () => jsPsych.data.get().csv()
-  });
+  };
+
+  timeline.push(save_data);
 }
 
 // Run the experiment
