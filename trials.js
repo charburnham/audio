@@ -50,7 +50,26 @@ const true_sentences = [
   ["49T", "The U.S. was the first country to use a submarine in warfare."],
   ["50T", "Only female mosquitoes bite."],
   ["51T", "A shrimp's heart is located in its head."],
-  ["52T", "Jupiter's mass is approximately 317 times earth's."]
+  ["52T", "Jupiter's mass is approximately 317 times earth's."],
+  ["F1T", "Animals that lay eggs don't have belly buttons."],
+  ["F2T", "A ball of glass will bounce higher than a ball of rubber."],
+  ["F3T", "Elephants can't jump."],
+  ["F4T", "A crocodile can stick its tongue out further than any other animal."],
+  ["F5T", "China only has one official time zone."],
+  ["F6T", "Before mercury, brandy was used to fill thermometers."],
+  ["F7T", "Cows give more milk when they listen to music."],
+  ["F8T", "The state of Arizona does not observe daylight savings time."],
+  ["F9T", "A jellyfish is more than 95% water."],
+  ["F10T", "Your heart does not momentarily stop when you sneeze."],
+  ["F11T", "In colonial times, only slaves ate lobster."],
+  ["F12T", "Children tend to grow faster in the spring."],
+  ["F13T", "Owls can see the color blue."],
+  ["F14T", "The first VCR was made in 1969."],
+  ["F15T", "In Ancient Egypt, a yard was the length of a man's arm from nose to tip."],
+  ["F16T", "The blue whale is the largest animal that has ever lived on earth."],
+  ["F17T", "Coca Cola is only brown because of food coloring."],
+  ["F18T", "Honduras currently has the highest murder rate of any country in the world."],
+  ["F19T", "Women blink more frequently than do men."]
 ];
 
 const false_sentences = [
@@ -105,7 +124,26 @@ const false_sentences = [
   ["49F", "Germany was the first country to use a submarine in warfare."],
   ["50F", "Only male mosquitoes bite."],
   ["51F", "A shrimp's heart is located in its abdomen."],
-  ["52F", "Jupiter's mass is more than 400 times that of the earth."]
+  ["52F", "Jupiter's mass is more than 400 times that of the earth."],
+  ["F1F", "Some animals that lay eggs have belly buttons."],
+  ["F2F", "A ball of rubber will bounce higher than a ball of glass."],
+  ["F3F", "Elephants can jump higher than humans."],
+  ["F4F", "A crocodile cannot stick out its tongue."],
+  ["F5F", "China has five official time zones."],
+  ["F6F", "Before mercury, whisky was used to fill thermometers."],
+  ["F7F", "Cows give more milk when milked in complete silence."],
+  ["F8F", "The state of Montana does not observe daylight savings time."],
+  ["F9F", "A jellyfish is more than 70% water."],
+  ["F10F", "Your heart stops momentarily when you sneeze."],
+  ["F11F", "In colonial times, only the elite classes ate lobster."],
+  ["F12F", "Children tend to grow faster in the winter."],
+  ["F13F", "Owls cannot see the color blue."],
+  ["F14F", "The first VCR was made in 1973."],
+  ["F15F", "In Ancient Egypt, a yard was the length of a man's arm span."],
+  ["F16F", "The blue whale is the second largest animal that has ever lived on earth."],
+  ["F17F", "Coca Cola would be green without the added food coloring."],
+  ["F18F", "Venezuela currently has the highest murder rate of any country in the world."],
+  ["F19F", "Men blink more frequently than do women."]
 ];
 
 let trial_objects = [
